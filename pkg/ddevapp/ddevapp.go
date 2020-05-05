@@ -62,53 +62,55 @@ const DdevFileSignature = "#ddev-generated"
 // DdevApp is the struct that represents a ddev app, mostly its config
 // from config.yaml.
 type DdevApp struct {
-	Name                      string                 `yaml:"name"`
-	Type                      string                 `yaml:"type"`
-	Docroot                   string                 `yaml:"docroot"`
-	PHPVersion                string                 `yaml:"php_version"`
-	WebserverType             string                 `yaml:"webserver_type"`
-	WebImage                  string                 `yaml:"webimage,omitempty"`
-	DBImage                   string                 `yaml:"dbimage,omitempty"`
-	DBAImage                  string                 `yaml:"dbaimage,omitempty"`
-	RouterHTTPPort            string                 `yaml:"router_http_port"`
-	RouterHTTPSPort           string                 `yaml:"router_https_port"`
-	XdebugEnabled             bool                   `yaml:"xdebug_enabled"`
-	NoProjectMount            bool                   `yaml:"no_project_mount,omitempty"`
-	AdditionalHostnames       []string               `yaml:"additional_hostnames"`
-	AdditionalFQDNs           []string               `yaml:"additional_fqdns"`
-	MariaDBVersion            string                 `yaml:"mariadb_version,omitempty"`
-	MySQLVersion              string                 `yaml:"mysql_version,omitempty"`
-	NFSMountEnabled           bool                   `yaml:"nfs_mount_enabled,omitempty"`
-	NFSMountEnabledGlobal     bool                   `yaml:"-"`
-	ConfigPath                string                 `yaml:"-"`
-	AppRoot                   string                 `yaml:"-"`
-	Platform                  string                 `yaml:"-"`
-	Provider                  string                 `yaml:"provider,omitempty"`
-	DataDir                   string                 `yaml:"-"`
-	SiteSettingsPath          string                 `yaml:"-"`
-	SiteDdevSettingsFile      string                 `yaml:"-"`
-	providerInstance          Provider               `yaml:"-"`
-	Hooks                     map[string][]YAMLTask  `yaml:"hooks,omitempty"`
-	UploadDir                 string                 `yaml:"upload_dir,omitempty"`
-	WorkingDir                map[string]string      `yaml:"working_dir,omitempty"`
-	OmitContainers            []string               `yaml:"omit_containers,omitempty,flow"`
-	OmitContainerGlobal       []string               `yaml:"-"`
-	HostDBPort                string                 `yaml:"host_db_port,omitempty"`
-	HostWebserverPort         string                 `yaml:"host_webserver_port,omitempty"`
-	HostHTTPSPort             string                 `yaml:"host_https_port,omitempty"`
-	MailhogPort               string                 `yaml:"mailhog_port,omitempty"`
-	MailhogHTTPSPort          string                 `yaml:"mailhog_https_port,omitempty"`
-	PHPMyAdminPort            string                 `yaml:"phpmyadmin_port,omitempty"`
-	PHPMyAdminHTTPSPort       string                 `yaml:"phpmyadmin_https_port,omitempty"`
-	WebImageExtraPackages     []string               `yaml:"webimage_extra_packages,omitempty,flow"`
-	DBImageExtraPackages      []string               `yaml:"dbimage_extra_packages,omitempty,flow"`
-	ProjectTLD                string                 `yaml:"project_tld,omitempty"`
-	UseDNSWhenPossible        bool                   `yaml:"use_dns_when_possible"`
-	MkcertEnabled             bool                   `yaml:"-"`
-	NgrokArgs                 string                 `yaml:"ngrok_args,omitempty"`
-	Timezone                  string                 `yaml:"timezone,omitempty"`
-	DisableSettingsManagement bool                   `yaml:"disable_settings_management,omitempty"`
-	ComposeYaml               map[string]interface{} `yaml:"-"`
+	Name                       string                 `yaml:"name"`
+	Type                       string                 `yaml:"type"`
+	Docroot                    string                 `yaml:"docroot"`
+	PHPVersion                 string                 `yaml:"php_version"`
+	WebserverType              string                 `yaml:"webserver_type"`
+	WebImage                   string                 `yaml:"webimage,omitempty"`
+	DBImage                    string                 `yaml:"dbimage,omitempty"`
+	DBAImage                   string                 `yaml:"dbaimage,omitempty"`
+	RouterHTTPPort             string                 `yaml:"router_http_port"`
+	RouterHTTPSPort            string                 `yaml:"router_https_port"`
+	XdebugEnabled              bool                   `yaml:"xdebug_enabled"`
+	NoProjectMount             bool                   `yaml:"no_project_mount,omitempty"`
+	AdditionalHostnames        []string               `yaml:"additional_hostnames"`
+	AdditionalFQDNs            []string               `yaml:"additional_fqdns"`
+	MariaDBVersion             string                 `yaml:"mariadb_version,omitempty"`
+	MySQLVersion               string                 `yaml:"mysql_version,omitempty"`
+	NFSMountEnabled            bool                   `yaml:"nfs_mount_enabled,omitempty"`
+	NFSMountEnabledGlobal      bool                   `yaml:"-"`
+	ConfigPath                 string                 `yaml:"-"`
+	AppRoot                    string                 `yaml:"-"`
+	Platform                   string                 `yaml:"-"`
+	Provider                   string                 `yaml:"provider,omitempty"`
+	DataDir                    string                 `yaml:"-"`
+	SiteSettingsPath           string                 `yaml:"-"`
+	SiteDdevSettingsFile       string                 `yaml:"-"`
+	providerInstance           Provider               `yaml:"-"`
+	Hooks                      map[string][]YAMLTask  `yaml:"hooks,omitempty"`
+	UploadDir                  string                 `yaml:"upload_dir,omitempty"`
+	WorkingDir                 map[string]string      `yaml:"working_dir,omitempty"`
+	OmitContainers             []string               `yaml:"omit_containers,omitempty,flow"`
+	OmitContainerGlobal        []string               `yaml:"-"`
+	HostDBPort                 string                 `yaml:"host_db_port,omitempty"`
+	HostWebserverPort          string                 `yaml:"host_webserver_port,omitempty"`
+	HostHTTPSPort              string                 `yaml:"host_https_port,omitempty"`
+	MailhogPort                string                 `yaml:"mailhog_port,omitempty"`
+	MailhogHTTPSPort           string                 `yaml:"mailhog_https_port,omitempty"`
+	PHPMyAdminPort             string                 `yaml:"phpmyadmin_port,omitempty"`
+	PHPMyAdminHTTPSPort        string                 `yaml:"phpmyadmin_https_port,omitempty"`
+	WebImageExtraPackages      []string               `yaml:"webimage_extra_packages,omitempty,flow"`
+	DBImageExtraPackages       []string               `yaml:"dbimage_extra_packages,omitempty,flow"`
+	ProjectTLD                 string                 `yaml:"project_tld,omitempty"`
+	UseDNSWhenPossible         bool                   `yaml:"use_dns_when_possible"`
+	MkcertEnabled              bool                   `yaml:"-"`
+	NgrokArgs                  string                 `yaml:"ngrok_args,omitempty"`
+	Timezone                   string                 `yaml:"timezone,omitempty"`
+	DisableSettingsManagement  bool                   `yaml:"disable_settings_management,omitempty"`
+	ComposeYaml                map[string]interface{} `yaml:"-"`
+	InstrumentationOptInGlobal bool                   `yaml:"-"`
+	InstrumentationOptIn       bool                   `yaml:"instrumentation_opt_in"`
 }
 
 //var ComposeYaml map[string]interface{}
@@ -354,6 +356,11 @@ func (app *DdevApp) GetWebserverType() string {
 		v = app.WebserverType
 	}
 	return v
+}
+
+// GetInstrumentationOptIn returns the app's opt in status, either local or global config.
+func (app *DdevApp) GetInstrumentationOptIn() bool {
+	return app.InstrumentationOptIn || app.InstrumentationOptInGlobal
 }
 
 // ImportDB takes a source sql dump and imports it to an active site's database container.

@@ -124,7 +124,13 @@ Support: https://ddev.readthedocs.io/en/stable/#support`,
 			event = fullCommand[1]
 		}
 
-		if globalconfig.DdevGlobalConfig.InstrumentationOptIn && version.SegmentKey != "" && nodeps.IsInternetActive() && len(fullCommand) > 1 {
+		instrumentation_opt_in := globalconfig.DdevGlobalConfig.InstrumentationOptIn
+		active_app, err := ddevapp.GetActiveApp("")
+		if err == nil {
+			instrumentation_opt_in = active_app.GetInstrumentationOptIn();
+		}
+
+		if instrumentation_opt_in && version.SegmentKey != "" && nodeps.IsInternetActive() && len(fullCommand) > 1 {
 			ddevapp.SetInstrumentationBaseTags()
 			ddevapp.SendInstrumentationEvents(event)
 		}

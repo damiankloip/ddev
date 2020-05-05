@@ -86,6 +86,7 @@ func NewApp(appRoot string, includeOverrides bool, provider string) (*DdevApp, e
 	// Provide a default app name based on directory name
 	app.Name = filepath.Base(app.AppRoot)
 	app.OmitContainerGlobal = globalconfig.DdevGlobalConfig.OmitContainersGlobal
+	app.InstrumentationOptInGlobal = globalconfig.DdevGlobalConfig.InstrumentationOptIn
 	app.ProjectTLD = nodeps.DdevDefaultTLD
 	app.UseDNSWhenPossible = true
 
